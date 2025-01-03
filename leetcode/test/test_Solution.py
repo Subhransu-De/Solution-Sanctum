@@ -1,15 +1,18 @@
 from leetcode.top_k_frequent_elements.Solution import Solution
 import pytest
 
-@pytest.mark.benchmark(max_time=0.100)
+
 @pytest.mark.parametrize(
-    "nums, k, expected",
+    "test_input",
     [
-        ([1, 1, 1, 2, 2, 3], 2, [1, 2]),
-        ([1], 1, [1]),
-        ([1, 2], 2, [1, 2]),
+        {"nums": [1, 1, 1, 2, 2, 3], "k": 2, "expected": [1, 2]},
+        {"nums": [1], "k": 1, "expected": [1]},
+        {"nums": [1, 2], "k": 2, "expected": [1, 2]},
     ],
 )
-def test_top_k_frequent(benchmark, nums, k, expected):
-    solution = Solution()
-    assert benchmark(solution.topKFrequent, nums, k) == expected
+def test_top_k_frequent(test_input):
+    nums = test_input["nums"]
+    k = test_input["k"]
+    expected = test_input["expected"]
+
+    assert Solution().topKFrequent(nums, k) == expected
