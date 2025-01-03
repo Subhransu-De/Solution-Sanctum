@@ -10,7 +10,6 @@ import pytest
         ([1, 2], 2, [1, 2]),
     ],
 )
-def test_top_k_frequent_performance(benchmark, nums, k, expected):
+def test_top_k_frequent(benchmark, nums, k, expected):
     solution = Solution()
     assert benchmark(solution.topKFrequent, nums, k) == expected
-    
